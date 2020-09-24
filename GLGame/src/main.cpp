@@ -2,17 +2,17 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "event/EventBus.h"
-#include "eventbus/EventBusThree.h"
-#include "eventbus/EventBusTwo.h"
-#include "events/KeyPressEvent.h"
+#include "Event.h"
 #include "render/Shader.h"
 #include "fileio/stb_image.h"
 
-EventBus eventBus;
-EventBusTwo<void(int, int, int, int)> eventBusTwo;
-EventBusThree<void(int, int, int, int)> event_bus_three;
-EventBusThree<void(GLFWwindow* window, int width, int height)> windowSizeUpdate;
+
+#include <crtdbg.h>
+#define _CRTDBG_MAP_ALLOC
+
+
+//Event<void(int, int, int, int)> KeyPressEvent;
+Event<void(int, int)> WindowSizeEvent;
 
 void processKeyboardInput(GLFWwindow* window)
 {
@@ -22,24 +22,13 @@ void processKeyboardInput(GLFWwindow* window)
 
 void onWindowSizeUpdate(GLFWwindow* window, int width, int height)
 {
-	//std::cout << "Frame buffer size changed: " << width << "x" << height << std::endl;
-	windowSizeUpdate.Invoke(window, width, height);
+	WindowSizeEvent.Invoke(width, height);
 	glViewport(0, 0, width, height);
 }
 
 void glOnKeyPress(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-	KeyPressEvent e(key, scancode, action, mods);
-	eventBus.Fire(e);
-
-	event_bus_three.Invoke(key, scancode, action, mods);
-	
-	
-}
-
-void test(int a, int b, int c, int d)
-{
-	std::cout << "Hello world" << a << std::endl;
+	//KeyPressEvent.Invoke(key, scancode, action, mods);
 }
 
 int main()
@@ -48,9 +37,6 @@ int main()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	event_bus_three.Register([](int a, int b, int c, int d) {std::cout << "Hello: " << a << std::endl;});
-	event_bus_three.Register([](int a, int b, int c, int d) {std::cout << "Bai: " << a << std::endl;});
-	windowSizeUpdate.Register([](GLFWwindow* wwindow, int width, int height) {std::cout << "Frame buffer size changed: " << width << "x" << height << std::endl;});
 	GLFWwindow* window = glfwCreateWindow(800, 600, "Learn OpenGL", nullptr, nullptr);
 	if (window == nullptr)
 	{
@@ -158,5 +144,9 @@ int main()
 	}
 
 	glfwTerminate();
+
+	_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE); _CrtSetReportFile(_CRT_WARN, _CRTDBG_FILE_STDOUT);
+	_CrtDumpMemoryLeaks();
 	return 0;
+	
 }
