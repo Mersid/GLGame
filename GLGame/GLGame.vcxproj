@@ -170,9 +170,6 @@
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\eventbus\EventBusTwo.cpp" />
-    <ClCompile Include="src\events\KeyPressEvent.cpp" />
-    <ClCompile Include="src\event\EventBus.cpp" />
     <ClCompile Include="src\fileio\FileUtils.cpp" />
     <ClCompile Include="src\render\Shader.cpp" />
     <ClCompile Include="src\glad.c" />
@@ -180,11 +177,7 @@
     <ClCompile Include="src\fileio\stb_image.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\eventbus\EventBusThree.h" />
-    <ClInclude Include="src\eventbus\EventBusTwo.h" />
-    <ClInclude Include="src\events\KeyPressEvent.h" />
-    <ClInclude Include="src\event\Event.h" />
-    <ClInclude Include="src\event\EventBus.h" />
+    <ClInclude Include="src\Event.h" />
     <ClInclude Include="src\fileio\FileUtils.h" />
     <ClInclude Include="src\render\Shader.h" />
     <ClInclude Include="src\fileio\stb_image.h" />
