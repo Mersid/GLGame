@@ -12,7 +12,7 @@ class Event<Return(Args...)>
 
 public:
 	void Register(std::function<Return(Args...)>);
-	void Invoke(Args... args);
+	void invoke(Args... args);
 };
 
 
@@ -24,7 +24,7 @@ void Event<Return(Args ...)>::Register(std::function<Return(Args...)> method)
 
 
 template <typename Return, typename ... Args>
-void Event<Return(Args ...)>::Invoke(Args ... args)
+void Event<Return(Args ...)>::invoke(Args ... args)
 {
 	for (const auto& event : events)
 		event(args...);

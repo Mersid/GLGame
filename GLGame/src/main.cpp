@@ -8,6 +8,13 @@
 
 
 #include <crtdbg.h>
+#include <vector>
+#include <xutility>
+
+
+
+#include "render/VertexArray.h"
+#include "render/VertexElementBuffer.h"
 #define _CRTDBG_MAP_ALLOC
 
 
@@ -22,13 +29,13 @@ void processKeyboardInput(GLFWwindow* window)
 
 void onWindowSizeUpdate(GLFWwindow* window, int width, int height)
 {
-	WindowSizeEvent.Invoke(width, height);
+	WindowSizeEvent.invoke(width, height);
 	glViewport(0, 0, width, height);
 }
 
 void glOnKeyPress(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-	KeyPressEvent.Invoke(key, scancode, action, mods);
+	KeyPressEvent.invoke(key, scancode, action, mods);
 }
 
 
@@ -75,10 +82,9 @@ int main()
 		0, 1, 3,
 		1, 2, 3
 	};
-
-	unsigned int vao;
-	glGenVertexArrays(1, &vao);
-	glBindVertexArray(vao);
+	
+	VertexArray vao;
+	vao.bind();
 
 	unsigned int vbo;
 	glGenBuffers(1, &vbo);
@@ -89,6 +95,10 @@ int main()
 	glGenBuffers(1, &ebo);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+	VertexElementBuffer vertexElementBuffer;
+	vertexElementBuffer.setVertices(vertices, std::size(vertices));
+
 
 
 	const Shader shader("resources/shaders/vertex.glsl", "resources/shaders/fragment.glsl");
