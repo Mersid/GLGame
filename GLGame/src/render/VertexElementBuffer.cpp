@@ -54,6 +54,9 @@ unsigned int VertexElementBuffer::getElementBufferId() const
 
 void VertexElementBuffer::setVertices(float vertices[], unsigned int count)
 {
+	if (!isBound())
+		Log("You must bind the vertex array buffer before setting the vertices");
+	
 	delete[] this->vertices;
 	this->vertices = new float[count];
 
@@ -65,6 +68,9 @@ void VertexElementBuffer::setVertices(float vertices[], unsigned int count)
 
 void VertexElementBuffer::setIndices(unsigned int indices[], unsigned int count)
 {
+	if (!isBound())
+		Log("You must bind the element array buffer before setting the vertices");
+	
 	delete[] this->indices;
 	this->indices = new unsigned int[count];
 

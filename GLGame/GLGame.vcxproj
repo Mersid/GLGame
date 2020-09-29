@@ -175,6 +175,7 @@
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\fileio\stb_image.c" />
+    <ClCompile Include="src\render\Texture.cpp" />
     <ClCompile Include="src\render\VertexArray.cpp" />
     <ClCompile Include="src\render\VertexElementBuffer.cpp" />
   </ItemGroup>
@@ -184,6 +185,7 @@
     <ClInclude Include="src\fileio\FileUtils.h" />
     <ClInclude Include="src\render\Shader.h" />
     <ClInclude Include="src\fileio\stb_image.h" />
+    <ClInclude Include="src\render\Texture.h" />
     <ClInclude Include="src\render\VertexArray.h" />
     <ClInclude Include="src\render\VertexElementBuffer.h" />
   </ItemGroup>

@@ -83,17 +83,9 @@ int main()
 	vertexArray.bind();
 	
 	VertexElementBuffer vertexElementBuffer;
-	
+	vertexElementBuffer.bind();
 	vertexElementBuffer.setVertices(vertices, std::size(vertices));
 	vertexElementBuffer.setIndices(indices, std::size(indices));
-	vertexElementBuffer.bind();
-
-	GLenum err;
-	while ((err = glGetError()) != GL_NO_ERROR)
-	{
-		Log(err);
-	}
-
 	
 	const Shader shader("resources/shaders/vertex.glsl", "resources/shaders/fragment.glsl");
 	shader.use();
