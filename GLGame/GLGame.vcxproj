@@ -179,6 +179,7 @@
     <ClCompile Include="src\render\VertexElementBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Debug.h" />
     <ClInclude Include="src\Event.h" />
     <ClInclude Include="src\fileio\FileUtils.h" />
     <ClInclude Include="src\render\Shader.h" />

@@ -4,18 +4,13 @@
 
 #include "Event.h"
 #include "render/Shader.h"
-#include "fileio/stb_image.h"
-
-
 #include <crtdbg.h>
-#include <vector>
 #include <xutility>
 
-
-
+#include "fileio/stb_image.h"
 #include "render/VertexArray.h"
 #include "render/VertexElementBuffer.h"
-#define _CRTDBG_MAP_ALLOC
+#include "Debug.h"
 
 
 Event<void(int, int, int, int)> KeyPressEvent;
@@ -41,6 +36,7 @@ void glOnKeyPress(GLFWwindow* window, int key, int scancode, int action, int mod
 
 int main()
 {
+	DebugInit();
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -85,7 +81,7 @@ int main()
 	
 	VertexArray vao;
 	vao.bind();
-
+	/*
 	unsigned int vbo;
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -95,11 +91,22 @@ int main()
 	glGenBuffers(1, &ebo);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
+	*/
+	
 	VertexElementBuffer vertexElementBuffer;
-	vertexElementBuffer.setVertices(vertices, std::size(vertices));
+	vertexElementBuffer.bind();
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+	
+	vertexElementBuffer.setVertices(vertices, std::size(vertices)); // This function is broken... why?
+	//vertexElementBuffer.setIndices(indices, std::size(indices));
+	
 
-
+	GLenum err;
+	while ((err = glGetError()) != GL_NO_ERROR)
+	{
+		Log(err);
+	}
 
 	const Shader shader("resources/shaders/vertex.glsl", "resources/shaders/fragment.glsl");
 	shader.use();
@@ -162,7 +169,7 @@ int main()
 	glfwTerminate();
 
 	_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE); _CrtSetReportFile(_CRT_WARN, _CRTDBG_FILE_STDOUT);
-	_CrtDumpMemoryLeaks();
+	//_CrtDumpMemoryLeaks();
 	return 0;
 	
 }

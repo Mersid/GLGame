@@ -1,6 +1,9 @@
 ﻿#include "VertexElementBuffer.h"
 
+
+#include <memory>
 #include <glad/glad.h>
+#include "../Debug.h"
 
 VertexElementBuffer::VertexElementBuffer() : vboId_(0), eboId_(0)
 {
@@ -8,7 +11,13 @@ VertexElementBuffer::VertexElementBuffer() : vboId_(0), eboId_(0)
 	glGenBuffers(1, &eboId_);
 }
 
-void VertexElementBuffer::bind()
+VertexElementBuffer::~VertexElementBuffer()
+{
+	delete[] vertices;
+	delete[] indices;
+}
+
+void VertexElementBuffer::bind() const
 {
 	glBindBuffer(GL_ARRAY_BUFFER, vboId_);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, eboId_);
@@ -43,11 +52,24 @@ unsigned int VertexElementBuffer::getElementBufferId() const
 	return eboId_;
 }
 
-void VertexElementBuffer::setVertices(const float vertices[], unsigned int count)
+void VertexElementBuffer::setVertices(float vertices[], unsigned int count)
 {
-	
+	delete[] this->vertices;
+	this->vertices = new float[count];
+
+	for (unsigned int i = 0; i < count; i++)
+		this->vertices[i] = vertices[1];
+
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * count, this->vertices, GL_STATIC_DRAW);	
 }
 
-void VertexElementBuffer::setIndices(int indices[])
+void VertexElementBuffer::setIndices(unsigned int indices[], unsigned int count)
 {
+	delete[] this->indices;
+	this->indices = new unsigned int[count];
+
+	for (unsigned int i = 0; i < count; i++)
+		this->indices[i] = indices[i];
+
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * count, this->indices, GL_STATIC_DRAW);
 }
