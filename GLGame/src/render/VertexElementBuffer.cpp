@@ -58,7 +58,7 @@ void VertexElementBuffer::setVertices(float vertices[], unsigned int count)
 	this->vertices = new float[count];
 
 	for (unsigned int i = 0; i < count; i++)
-		this->vertices[i] = vertices[1];
+		this->vertices[i] = vertices[i];
 
 	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * count, this->vertices, GL_STATIC_DRAW);	
 }
