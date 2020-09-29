@@ -105,6 +105,7 @@ int main()
 	
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
+	
 	int width;
 	int height;
 	int channels;
@@ -148,9 +149,5 @@ int main()
 	}
 
 	glfwTerminate();
-
-	_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE); _CrtSetReportFile(_CRT_WARN, _CRTDBG_FILE_STDOUT);
-	//_CrtDumpMemoryLeaks();
 	return 0;
-	
 }
