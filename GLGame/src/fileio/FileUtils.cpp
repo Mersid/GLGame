@@ -1,8 +1,5 @@
 #include "FileUtils.h"
 
-
-
-
 std::string FileUtils::readFile(const std::string& path)
 {
 	std::ifstream stream;

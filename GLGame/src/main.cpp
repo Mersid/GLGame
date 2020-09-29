@@ -11,7 +11,7 @@
 #define _CRTDBG_MAP_ALLOC
 
 
-//Event<void(int, int, int, int)> KeyPressEvent;
+Event<void(int, int, int, int)> KeyPressEvent;
 Event<void(int, int)> WindowSizeEvent;
 
 void processKeyboardInput(GLFWwindow* window)
@@ -28,8 +28,9 @@ void onWindowSizeUpdate(GLFWwindow* window, int width, int height)
 
 void glOnKeyPress(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-	//KeyPressEvent.Invoke(key, scancode, action, mods);
+	KeyPressEvent.Invoke(key, scancode, action, mods);
 }
+
 
 int main()
 {
@@ -37,6 +38,11 @@ int main()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	WindowSizeEvent.Register([](int w, int h) {std::cout << "Screen size changed! " << w << "x" << h << std::endl;});
+	KeyPressEvent.Register([](int key, int scancode, int action, int mods)
+		{
+			std::cout << "Key pressed: " << "Key: " << key << ", Scancode: " << scancode << ", Action: " << action << ", Mods: " << mods << std::endl;
+		});
 	GLFWwindow* window = glfwCreateWindow(800, 600, "Learn OpenGL", nullptr, nullptr);
 	if (window == nullptr)
 	{

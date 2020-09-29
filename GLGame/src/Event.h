@@ -1,6 +1,8 @@
 #pragma once
 #include <functional>
 #include <vector>
+
+
 template<typename T> class Event;
 
 template<typename Return, typename... Args>
@@ -24,7 +26,7 @@ void Event<Return(Args ...)>::Register(std::function<Return(Args...)> method)
 template <typename Return, typename ... Args>
 void Event<Return(Args ...)>::Invoke(Args ... args)
 {
-	for (auto& event : events)
+	for (const auto& event : events)
 		event(args...);
 }
 

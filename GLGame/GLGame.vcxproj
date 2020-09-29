@@ -171,6 +171,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\fileio\FileUtils.cpp" />
+    <ClCompile Include="src\GLFunctions.cpp" />
     <ClCompile Include="src\render\Shader.cpp" />
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\main.cpp" />
