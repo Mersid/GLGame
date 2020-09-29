@@ -81,33 +81,12 @@ int main()
 	
 	VertexArray vao;
 	vao.bind();
-	/*
-	unsigned int vbo;
-	glGenBuffers(1, &vbo);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-	unsigned int ebo;
-	glGenBuffers(1, &ebo);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-	*/
 	
 	VertexElementBuffer vertexElementBuffer;
 	vertexElementBuffer.bind();
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+	vertexElementBuffer.setVertices(vertices, std::size(vertices));
+	vertexElementBuffer.setIndices(indices, std::size(indices));
 	
-	vertexElementBuffer.setVertices(vertices, std::size(vertices)); // This function is broken... why?
-	//vertexElementBuffer.setIndices(indices, std::size(indices));
-	
-
-	GLenum err;
-	while ((err = glGetError()) != GL_NO_ERROR)
-	{
-		Log(err);
-	}
-
 	const Shader shader("resources/shaders/vertex.glsl", "resources/shaders/fragment.glsl");
 	shader.use();
 	
