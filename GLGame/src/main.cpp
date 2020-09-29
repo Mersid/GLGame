@@ -11,6 +11,7 @@
 #include "render/VertexArray.h"
 #include "render/VertexElementBuffer.h"
 #include "Debug.h"
+#include "render/Texture.h"
 
 
 Event<void(int, int, int, int)> KeyPressEvent;
@@ -123,6 +124,7 @@ int main()
 
 	stbi_image_free(data);
 
+	Texture texture2d("resources/textures/container.jpg");
 	
 	
 	while (!glfwWindowShouldClose(window))
