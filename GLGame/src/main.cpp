@@ -105,27 +105,8 @@ int main()
 	
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-	
-	int width;
-	int height;
-	int channels;
-	unsigned char* data = stbi_load("resources/textures/container.jpg", &width, &height, &channels, 0);
-
-	unsigned int texture;
-	glGenTextures(1, &texture);
-	glBindTexture(GL_TEXTURE, texture);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-	glGenerateMipmap(texture);
-
-	stbi_image_free(data);
-
 	Texture texture2d("resources/textures/container.jpg");
+	texture2d.load();
 	
 	
 	while (!glfwWindowShouldClose(window))

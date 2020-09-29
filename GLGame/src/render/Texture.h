@@ -3,6 +3,8 @@
 
 class Texture
 {
+	unsigned int id_;
+	
 	int width_{};
 	int height_{};
 	int channels_{};
@@ -14,4 +16,5 @@ public:
 	int getHeight() const;
 	int getChannels() const;
 	unsigned char* getTexture() const;
+	void load() const;
 };
