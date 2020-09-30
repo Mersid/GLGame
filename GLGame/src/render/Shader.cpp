@@ -85,7 +85,7 @@ unsigned int Shader::compileProgram(unsigned int vertexShaderId, unsigned int fr
 		glGetProgramiv(programId, GL_INFO_LOG_LENGTH, &length);
 
 		char* log = new char[length];
-		glGetProgramInfoLog(id, length, nullptr, log);
+		glGetProgramInfoLog(programId, length, nullptr, log);
 		Log(std::string("Shader program failed to compile:\n") + std::string(log));
 		delete[] log;
 		return 0;
