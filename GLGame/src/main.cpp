@@ -11,9 +11,10 @@
 #include "render/VertexArray.h"
 #include "render/VertexElementBuffer.h"
 #include "Debug.h"
-#include "glm/fwd.hpp"
-#include "glm/vec4.hpp"
+
 #include "glm/detail/type_mat4x4.hpp"
+
+
 #include "render/Texture.h"
 
 Event<void(int, int, int, int)> KeyPressEvent;

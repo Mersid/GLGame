@@ -42,6 +42,9 @@
     <ClCompile Include="external\includes\glm\detail\glm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="external\includes\glm\detail\dummy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\fileio\stb_image.h">
@@ -812,6 +815,48 @@
     <ClInclude Include="external\includes\KHR\khrplatform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="external\includes\glm\detail\func_common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external\includes\glm\detail\func_exponential.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external\includes\glm\detail\func_geometric.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external\includes\glm\detail\func_integer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external\includes\glm\detail\func_matrix.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external\includes\glm\detail\func_packing.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external\includes\glm\detail\func_trigonometric.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external\includes\glm\detail\func_vector_relational.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external\includes\glm\detail\precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external\includes\glm\detail\type_gentype.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external\includes\glm\detail\type_int.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external\includes\glm\detail\type_mat.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external\includes\glm\detail\type_vec.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external\includes\glm\gtc\functions.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\shaders\vertex.glsl" />
@@ -1216,6 +1261,24 @@
       <Filter>Header Files</Filter>
     </None>
     <None Include="external\includes\glm\gtx\wrap.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="external\includes\glm\detail\type_gentype.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="external\includes\glm\detail\type_mat.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="external\includes\glm\detail\type_vec.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="external\includes\glm\gtc\color_encoding.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="external\includes\glm\gtc\functions.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="external\includes\glm\gtc\vec1.inl">
       <Filter>Header Files</Filter>
     </None>
   </ItemGroup>
