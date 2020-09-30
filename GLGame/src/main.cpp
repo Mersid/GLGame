@@ -13,6 +13,7 @@
 #include "Debug.h"
 #include "glm/fwd.hpp"
 #include "glm/vec4.hpp"
+#include "glm/detail/type_mat4x4.hpp"
 #include "render/Texture.h"
 
 Event<void(int, int, int, int)> KeyPressEvent;
@@ -118,8 +119,8 @@ int main()
 	shader.setInt("texture1", 0);
 	shader.setInt("texture2", 1);
 
-	glm::vec4 vector(1, 0, 0, 1);
-	glm::mat4 matrix(1, 1, 1, 1);
+	glm::vec4 vec(1.0f, 0.0f, 0.0f, 1.0f);
+	glm::mat4 trans = glm::mat4(1.0f);
 
 	while (!glfwWindowShouldClose(window))
 	{
