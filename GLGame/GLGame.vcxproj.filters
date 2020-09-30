@@ -39,9 +39,6 @@
     <ClCompile Include="src\render\Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="external\includes\glm\detail\dummy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="external\includes\glm\detail\glm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

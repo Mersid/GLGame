@@ -170,7 +170,6 @@
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="external\includes\glm\detail\dummy.cpp" />
     <ClCompile Include="external\includes\glm\detail\glm.cpp" />
     <ClCompile Include="src\fileio\FileUtils.cpp" />
     <ClCompile Include="src\render\Shader.cpp" />
