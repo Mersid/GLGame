@@ -12,9 +12,6 @@
 #include "render/VertexElementBuffer.h"
 #include "Debug.h"
 
-#include "glm/detail/type_mat4x4.hpp"
-
-
 #include "render/Texture.h"
 
 Event<void(int, int, int, int)> KeyPressEvent;
@@ -120,8 +117,7 @@ int main()
 	shader.setInt("texture1", 0);
 	shader.setInt("texture2", 1);
 
-	glm::vec4 vec(1.0f, 0.0f, 0.0f, 1.0f);
-	glm::mat4 trans = glm::mat4(1.0f);
+
 
 	while (!glfwWindowShouldClose(window))
 	{
