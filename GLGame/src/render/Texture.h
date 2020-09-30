@@ -3,7 +3,7 @@
 
 class Texture
 {
-	unsigned int id_;
+	unsigned int id_{};
 	
 	int width_{};
 	int height_{};
@@ -18,5 +18,4 @@ public:
 	unsigned int getId() const;
 	unsigned char* getTexture() const;
 	void load() const;
-	void loadWithAlpha() const;
 };

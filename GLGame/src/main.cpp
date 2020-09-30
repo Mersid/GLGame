@@ -79,6 +79,7 @@ int main()
 		0, 1, 3,
 		1, 2, 3
 	};
+
 	
 	VertexArray vertexArray;
 	vertexArray.bind();
@@ -90,6 +91,8 @@ int main()
 	
 	const Shader shader("resources/shaders/vertex.glsl", "resources/shaders/fragment.glsl");
 	shader.use();
+	
+
 	
 	// Position
 	glVertexAttribPointer(0, 3, GL_FLOAT, false, 8 * sizeof(float), nullptr);
@@ -104,18 +107,15 @@ int main()
 	glEnableVertexAttribArray(2);
 	
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-
 	
 	const Texture texture("resources/textures/container.jpg");
 	texture.load();
 	
 	const Texture texture2("resources/textures/awesomeface.png");
-	texture2.loadWithAlpha();
+	texture2.load();
 
-	shader.use();
-	
-	glUniform1i(glGetUniformLocation(shader.id, "texture1"), 0);
-	glUniform1i(glGetUniformLocation(shader.id, "texture2"), 1);
+	shader.setInt("texture1", 0);
+	shader.setInt("texture2", 1);
 
 	
 	while (!glfwWindowShouldClose(window))
@@ -136,6 +136,8 @@ int main()
 		glBindTexture(GL_TEXTURE_2D, texture.getId());
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_2D, texture2.getId());
+
+		
 		shader.use();
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		processKeyboardInput(window);

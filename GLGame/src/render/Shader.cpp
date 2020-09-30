@@ -78,14 +78,14 @@ unsigned int Shader::compileProgram(unsigned int vertexShaderId, unsigned int fr
 
 	// Check for errors
 	int success;
-	glGetShaderiv(id, GL_LINK_STATUS, &success);
+	glGetProgramiv(programId, GL_LINK_STATUS, &success);
 	if (!success)
 	{
 		int length;
-		glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
+		glGetProgramiv(programId, GL_INFO_LOG_LENGTH, &length);
 
 		char* log = new char[length];
-		glGetShaderInfoLog(id, length, nullptr, log);
+		glGetProgramInfoLog(id, length, nullptr, log);
 		Log(std::string("Shader program failed to compile:\n") + std::string(log));
 		delete[] log;
 		return 0;
