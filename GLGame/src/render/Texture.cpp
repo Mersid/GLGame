@@ -45,7 +45,7 @@ unsigned char* Texture::getTexture() const
 
 void Texture::load() const
 {
-	glBindTexture(GL_TEXTURE, id_);
+	glBindTexture(GL_TEXTURE_2D, id_);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -58,7 +58,7 @@ void Texture::load() const
 
 void Texture::loadWithAlpha() const
 {
-	glBindTexture(GL_TEXTURE, id_);
+	glBindTexture(GL_TEXTURE_2D, id_);
 	
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
