@@ -593,6 +593,9 @@
     <None Include="external\includes\glm\gtx\vector_angle.inl" />
     <None Include="external\includes\glm\gtx\vector_query.inl" />
     <None Include="external\includes\glm\gtx\wrap.inl" />
+    <None Include="external\libs\GLFW\glfw.pdb">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
     <None Include="resources\shaders\fragment.glsl" />
     <None Include="resources\shaders\vertex.glsl" />
   </ItemGroup>
@@ -602,6 +605,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="external\includes\glm\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="external\libs\GLFW\glfw3.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

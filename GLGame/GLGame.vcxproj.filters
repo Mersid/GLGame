@@ -1278,6 +1278,7 @@
     <None Include="external\includes\glm\gtx\wrap.inl">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="external\libs\GLFW\glfw.pdb" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\textures\container.jpg">
@@ -1289,5 +1290,8 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="external\includes\glm\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="external\libs\GLFW\glfw3.lib" />
   </ItemGroup>
 </Project>
