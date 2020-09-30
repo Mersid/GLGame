@@ -11,6 +11,8 @@
 #include "render/VertexArray.h"
 #include "render/VertexElementBuffer.h"
 #include "Debug.h"
+#include "glm/fwd.hpp"
+#include "glm/vec4.hpp"
 #include "render/Texture.h"
 
 Event<void(int, int, int, int)> KeyPressEvent;
@@ -116,7 +118,9 @@ int main()
 	shader.setInt("texture1", 0);
 	shader.setInt("texture2", 1);
 
-	
+	glm::vec4 vector(1, 0, 0, 1);
+	glm::mat4 matrix(1, 1, 1, 1);
+
 	while (!glfwWindowShouldClose(window))
 	{
 		glClearColor(0.2f, 0.3f, 0.3f, 1);
