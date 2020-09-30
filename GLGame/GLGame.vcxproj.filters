@@ -1290,4 +1290,7 @@
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="external\includes\glm\CMakeLists.txt" />
+  </ItemGroup>
 </Project>
