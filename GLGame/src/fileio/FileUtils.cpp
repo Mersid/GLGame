@@ -1,4 +1,6 @@
 #include "FileUtils.h"
+#include <iostream>
+#include <fstream>
 
 std::string FileUtils::readFile(const std::string& path)
 {

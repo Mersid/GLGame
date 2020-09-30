@@ -4,6 +4,8 @@
 
 
 #include "../Debug.h"
+#include "../fileio/FileUtils.h"
+#include "glad/glad.h"
 
 
 Shader::Shader(const std::string& vertexPath, const std::string& fragmentPath)
