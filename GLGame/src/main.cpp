@@ -13,7 +13,6 @@
 #include "Debug.h"
 #include "render/Texture.h"
 
-
 Event<void(int, int, int, int)> KeyPressEvent;
 Event<void(int, int)> WindowSizeEvent;
 
