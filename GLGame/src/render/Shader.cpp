@@ -1,5 +1,10 @@
 #include "Shader.h"
 
+#include <string>
+
+
+#include "../Debug.h"
+
 
 Shader::Shader(const std::string& vertexPath, const std::string& fragmentPath)
 {
@@ -55,7 +60,7 @@ unsigned int Shader::compileShader(const std::string& shaderSrc, unsigned int sh
 
 		char* log = new char[length];
 		glGetShaderInfoLog(id, length, nullptr, log);
-		std::cout << "Shader failed to compile (type " << shaderType << "): " << log << std::endl;
+		Log(std::string("Shader failed to compile:\n") + std::string(log));
 		delete[] log;
 		return 0;
 	}
@@ -81,7 +86,7 @@ unsigned int Shader::compileProgram(unsigned int vertexShaderId, unsigned int fr
 
 		char* log = new char[length];
 		glGetShaderInfoLog(id, length, nullptr, log);
-		std::cout << "Shader program failed to compile: " << log << std::endl;
+		Log(std::string("Shader program failed to compile:\n") + std::string(log));
 		delete[] log;
 		return 0;
 	}

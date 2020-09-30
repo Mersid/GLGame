@@ -104,10 +104,27 @@ int main()
 	glEnableVertexAttribArray(2);
 	
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-
-	Texture texture2d("resources/textures/container.jpg");
-	texture2d.load();
+	/*
+	glActiveTexture(GL_TEXTURE0);
+	const Texture texture("resources/textures/container.jpg");
+	texture.load();
+	shader.setInt("texture1", 0);
 	
+	glActiveTexture(GL_TEXTURE1);
+	const Texture texture2("resources/textures/awesomeface.png");
+	texture2.loadWithAlpha();
+	shader.setInt("texture2", 1);*/
+	
+	const Texture texture("resources/textures/container.jpg");
+	texture.load();
+	
+	const Texture texture2("resources/textures/awesomeface.png");
+	texture2.loadWithAlpha();
+
+	shader.use();
+	glUniform1i(glGetUniformLocation(shader.id, "texture1"), 0);
+	glUniform1i(glGetUniformLocation(shader.id, "texture2"), 1);
+
 	
 	while (!glfwWindowShouldClose(window))
 	{
@@ -116,12 +133,18 @@ int main()
 
 		const float color = (sin(glfwGetTime()) + 1) / 2;
 		//const unsigned int vertexColorLocation = glGetUniformLocation(shader.id, "vertexColor");
-		shader.use();
+		
 		//shader.setFloat("vertexColor", color);
 		
 		//glUniform4f(vertexColorLocation, 0, color, 0, 1);
 		
 		//glDrawArrays(GL_TRIANGLES, 0, 3);
+		
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, texture.getId());/*
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, texture2.getId());*/
+		shader.use();
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		processKeyboardInput(window);
 

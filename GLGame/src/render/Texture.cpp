@@ -15,6 +15,7 @@ Texture::Texture(const std::string& path)
 Texture::~Texture()
 {
 	stbi_image_free(data_);
+	glDeleteTextures(1, &id_);
 }
 
 int Texture::getWidth() const
@@ -32,6 +33,11 @@ int Texture::getChannels() const
 	return channels_;
 }
 
+unsigned Texture::getId() const
+{
+	return id_;
+}
+
 unsigned char* Texture::getTexture() const
 {
 	return data_;
@@ -47,6 +53,19 @@ void Texture::load() const
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width_, height_, 0, GL_RGB, GL_UNSIGNED_BYTE, data_);
-	glGenerateMipmap(id_);
-	
+	glGenerateMipmap(GL_TEXTURE_2D);
 }
+
+void Texture::loadWithAlpha() const
+{
+	glBindTexture(GL_TEXTURE, id_);
+	
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width_, height_, 0, GL_RGBA, GL_UNSIGNED_BYTE, data_);
+	glGenerateMipmap(GL_TEXTURE_2D);
+}
+

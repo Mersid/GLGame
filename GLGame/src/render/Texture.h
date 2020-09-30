@@ -15,6 +15,8 @@ public:
 	int getWidth() const;
 	int getHeight() const;
 	int getChannels() const;
+	unsigned int getId() const;
 	unsigned char* getTexture() const;
 	void load() const;
+	void loadWithAlpha() const;
 };

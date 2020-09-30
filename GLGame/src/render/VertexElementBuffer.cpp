@@ -15,6 +15,8 @@ VertexElementBuffer::~VertexElementBuffer()
 {
 	delete[] vertices;
 	delete[] indices;
+
+	// Might want to call glDeleteBuffers too...
 }
 
 void VertexElementBuffer::bind() const

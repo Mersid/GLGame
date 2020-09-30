@@ -66,4 +66,13 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\shaders\vertex.glsl" />
+    <None Include="resources\shaders\fragment.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\textures\container.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

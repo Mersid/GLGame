@@ -9,9 +9,5 @@
 	_CrtSetReportFile(_CRT_WARN, _CRTDBG_FILE_STDOUT); \
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF)
 
-#ifdef _DEBUG
-	#define Log(message) \
-		std::cout << __FILE__ << ":" << __LINE__ << " in function " << __FUNCTION__ << std::endl << (message) << std::endl << std::endl
-#else
-	#define Log(message)
-#endif
+#define Log(message) \
+	std::cout << __FILE__ << ":" << __LINE__ << " in function " << __FUNCTION__ << std::endl << (message) << std::endl << std::endl

@@ -189,6 +189,13 @@
     <ClInclude Include="src\render\VertexArray.h" />
     <ClInclude Include="src\render\VertexElementBuffer.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\shaders\fragment.glsl" />
+    <None Include="resources\shaders\vertex.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\textures\container.jpg" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
