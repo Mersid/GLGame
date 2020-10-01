@@ -5,7 +5,6 @@
 #include "Event.h"
 #include "render/Shader.h"
 #include <crtdbg.h>
-#include <memory>
 #include <xutility>
 
 #include "fileio/stb_image.h"
@@ -13,16 +12,13 @@
 #include "render/VertexElementBuffer.h"
 #include "Debug.h"
 
-#include "render/Texture.h"
-
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
 
 #include "glm/detail/type_mat.hpp"
-#include "glm/detail/type_vec.hpp"
-#include "glm/gtx/matrix_transform_2d.hpp"
+#include "glm/gtx/transform.hpp"
+#include "glm/gtc/type_ptr.hpp"
+
+#include "render/Texture.h"
+
 
 Event<void(int, int, int, int)> KeyPressEvent;
 Event<void(int, int)> WindowSizeEvent;
@@ -127,6 +123,15 @@ int main()
 	shader.setInt("texture1", 0);
 	shader.setInt("texture2", 1);
 
+	glm::mat4 model = glm::mat4(1.0f);
+	model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+
+	glm::mat4 view = glm::mat4(1.0f);
+	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+
+	glm::mat4 projection;
+	projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
+
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -141,12 +146,20 @@ int main()
 		//glUniform4f(vertexColorLocation, 0, color, 0, 1);
 		
 		//glDrawArrays(GL_TRIANGLES, 0, 3);
-
+		/*
 		glm::mat4 trans = glm::mat4(1.0f);
 		trans = glm::translate(trans, glm::vec3(0.5, -0.5, 0));
 		trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0, 0, 1));
 		unsigned int transformLoc = glGetUniformLocation(shader.id, "transform");
 		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+		*/
+
+		int modelLoc = glGetUniformLocation(shader.id, "model");
+		glUniformMatrix4fv(modelLoc, 1, false, glm::value_ptr(model));
+		int viewLoc = glGetUniformLocation(shader.id, "view");
+		glUniformMatrix4fv(viewLoc, 1, false, glm::value_ptr(view));
+		int projectionLoc = glGetUniformLocation(shader.id, "projection");
+		glUniformMatrix4fv(projectionLoc, 1, false, glm::value_ptr(projection));
 		
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texture.getId());
