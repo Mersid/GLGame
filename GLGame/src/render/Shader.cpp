@@ -6,6 +6,10 @@
 #include "../Debug.h"
 #include "../fileio/FileUtils.h"
 #include "glad/glad.h"
+#include "glm/detail/type_mat2x2.hpp"
+#include "glm/detail/type_vec2.hpp"
+#include "glm/detail/type_vec3.hpp"
+#include "glm/detail/type_vec4.hpp"
 
 
 Shader::Shader(const std::string& vertexPath, const std::string& fragmentPath)
@@ -43,6 +47,46 @@ void Shader::setInt(const std::string& name, int value) const
 void Shader::setFloat(const std::string& name, float value) const
 {
 	glUniform1f(glGetUniformLocation(id, name.c_str()), value);
+}
+
+void Shader::setVec2(const std::string& name, glm::vec2& vector) const
+{
+	glUniform2fv(glGetUniformLocation(id, name.c_str()), 1, &vector[0]);
+}
+
+void Shader::setVec3(const std::string& name, glm::vec3& vector) const
+{
+	glUniform3fv(glGetUniformLocation(id, name.c_str()), 1, &vector[0]);
+}
+
+void Shader::setVec3(const std::string& name, float x, float y, float z) const
+{
+	glUniform3f(glGetUniformLocation(id, name.c_str()), x, y, z);
+}
+
+void Shader::setVec4(const std::string& name, glm::vec4& vector) const
+{
+	glUniform4fv(glGetUniformLocation(id, name.c_str()), 1, &vector[0]);
+}
+
+void Shader::setVec4(const std::string& name, float x, float y, float z, float w) const
+{
+	glUniform4f(glGetUniformLocation(id, name.c_str()), x, y, z, w);
+}
+
+void Shader::setMat2(const std::string& name, glm::mat2& matrix) const
+{
+	glUniformMatrix2fv(glGetUniformLocation(id, name.c_str()), 1, false, &matrix[0][0]);
+}
+
+void Shader::setMat3(const std::string& name, glm::mat3& matrix) const
+{
+	glUniformMatrix3fv(glGetUniformLocation(id, name.c_str()), 1, false, &matrix[0][0]);
+}
+
+void Shader::setMat4(const std::string& name, glm::mat4& matrix) const
+{
+	glUniformMatrix4fv(glGetUniformLocation(id, name.c_str()), 1, false, &matrix[0][0]);
 }
 
 unsigned int Shader::compileShader(const std::string& shaderSrc, unsigned int shaderType)
