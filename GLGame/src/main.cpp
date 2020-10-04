@@ -16,7 +16,6 @@
 
 #include "glm/detail/type_mat.hpp"
 #include "glm/detail/type_vec.hpp"
-#include "glm/gtc/quaternion.hpp"
 #include "glm/gtx/transform.hpp"
 #include "glm/gtc/type_ptr.hpp"
 
@@ -57,6 +56,7 @@ int main()
 			std::cout << "Key pressed: " << "Key: " << key << ", Scancode: " << scancode << ", Action: " << action << ", Mods: " << mods << std::endl;
 		});
 	GLFWwindow* window = glfwCreateWindow(800, 600, "Learn OpenGL", nullptr, nullptr);
+	
 	if (window == nullptr)
 	{
 		std::cout << "GLFW window failed to initialize" << std::endl;
@@ -64,6 +64,7 @@ int main()
 		return -1;
 	}
 	glfwMakeContextCurrent(window);
+	
 
 	if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress)))
 	{
@@ -137,8 +138,9 @@ int main()
 		glm::vec3(1.5f,  0.2f, -1.5f),
 		glm::vec3(-1.3f,  1.0f, -1.5f)
 	};
-	
-	VertexArray vertexArray;
+
+
+	const VertexArray vertexArray;
 	vertexArray.bind();
 	
 	VertexElementBuffer vertexElementBuffer;
@@ -185,8 +187,6 @@ int main()
 
 		shader.use();
 
-		
-
 		glm::mat4 view = glm::mat4(1.0f);
 		view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
 
@@ -204,17 +204,6 @@ int main()
 			model = glm::translate(model, cubePositions[i]);
 			model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
 			shader.setMat4("model", model);
-
-			/*
-			int modelLoc = glGetUniformLocation(shader.id, "model");
-			glUniformMatrix4fv(modelLoc, 1, false, glm::value_ptr(model));
-			
-			int viewLoc = glGetUniformLocation(shader.id, "view");
-			glUniformMatrix4fv(viewLoc, 1, false, glm::value_ptr(view));
-			int projectionLoc = glGetUniformLocation(shader.id, "projection");
-			glUniformMatrix4fv(projectionLoc, 1, false, glm::value_ptr(projection));*/
-
-			
 
 			//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 			glDrawArrays(GL_TRIANGLES, 0, 36);
