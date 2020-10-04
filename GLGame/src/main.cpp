@@ -7,12 +7,10 @@
 #include <crtdbg.h>
 #include <xutility>
 
-#include "fileio/stb_image.h"
 #include "render/VertexArray.h"
 #include "render/VertexElementBuffer.h"
 #include "Debug.h"
 #include "glm/detail/func_trigonometric.hpp"
-
 
 #include "glm/detail/type_mat.hpp"
 #include "glm/detail/type_vec.hpp"
